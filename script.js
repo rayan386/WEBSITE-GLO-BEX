@@ -105,3 +105,10 @@ document.getElementById('addProductForm').addEventListener('submit', function(e)
     renderProducts();
   }
 });
+if (window.location.hostname === 'localhost') {
+  // إظهار الخانة فقط إذا كان الموقع يعمل محليًا
+  document.getElementById('addProductFormContainer').style.display = 'block';
+} else {
+  // إخفاء الخانة في بيئة الإنتاج
+  document.getElementById('addProductFormContainer').style.display = 'none';
+}
