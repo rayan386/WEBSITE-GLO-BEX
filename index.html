@@ -8,33 +8,25 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
+      text-align: center;
     }
-    header {
-      background-color: #1a1a1a;
-      color: white;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .logo {
-      font-size: 2em;
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
+
     .search-container {
       position: relative;
       width: 50%;
       max-width: 500px;
+      margin: 40px auto 10px auto;
     }
+
     input[type="text"] {
       width: 100%;
       padding: 10px 40px 10px 10px;
       font-size: 16px;
       border-radius: 25px;
-      border: none;
+      border: 1px solid #ccc;
       outline: none;
     }
+
     .search-icon {
       position: absolute;
       top: 50%;
@@ -43,6 +35,14 @@
       color: gray;
       pointer-events: none;
     }
+
+    .logo {
+      font-size: 2em;
+      font-weight: bold;
+      color: black;
+      margin-top: 10px;
+    }
+
     .suggestions {
       position: absolute;
       background-color: white;
@@ -52,30 +52,32 @@
       overflow-y: auto;
       z-index: 1000;
       border-radius: 0 0 10px 10px;
+      text-align: right;
     }
+
     .suggestions div {
       padding: 10px;
       cursor: pointer;
     }
+
     .suggestions div:hover {
       background-color: #eee;
     }
+
     .results {
       padding: 20px;
-      text-align: center;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="logo">Globex</div>
-    <div class="search-container">
-      <input type="text" id="searchInput" placeholder="ابحث عن منتج...">
-      <span class="search-icon">🔍</span>
-      <div id="suggestions" class="suggestions"></div>
-    </div>
-  </header>
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="ابحث عن منتج...">
+    <span class="search-icon">🔍</span>
+    <div id="suggestions" class="suggestions"></div>
+  </div>
+
+  <div class="logo">Globex</div>
 
   <div class="results" id="results"></div>
 
