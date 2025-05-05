@@ -122,4 +122,79 @@
 
 </body>
 </html>
-      
+<script>
+  const allProducts = [
+    { name: "Men's T-Shirt" },
+    { name: "Women's Dress" },
+    { name: "Gold Necklace" },
+    { name: "Sneakers" }, // مثال غير معروف للبوت
+    { name: "Watch" },
+    { name: "Women's Bag" }
+  ];
+
+  const learnedCategories = {
+    // كلمات يتعلمها المستخدم لاحقًا
+    "men": "men",
+    "man": "men",
+    "women": "women",
+    "woman": "women",
+    "watch": "accessories",
+    "necklace": "accessories",
+    "bag": "accessories"
+  };
+
+  function autoCategorize(product) {
+    const name = product.name.toLowerCase();
+    for (let keyword in learnedCategories) {
+      if (name.includes(keyword)) return learnedCategories[keyword];
+    }
+
+    // لم يجد تصنيف: اسأل المستخدم
+    let type = prompt(What category is "${product.name}"? (men, women, accessories));
+    if (type) {
+      // احفظ الكلمة الأولى التي كتبها المستخدم
+      const keyword = name.split(" ")[0];
+      learnedCategories[keyword] = type.toLowerCase();
+      return type.toLowerCase();
+    }
+
+    return "uncategorized";
+  }
+
+  allProducts.forEach(p => {
+    p.category = autoCategorize(p);
+  });
+
+  let currentCategory = "all";
+
+  function showCategory(category) {
+    currentCategory = category;
+    renderProducts();
+  }
+
+  function searchProducts() {
+    const query = document.getElementById("searchInput").value.toLowerCase();
+    const filtered = allProducts.filter(product =>
+      product.name.toLowerCase().includes(query)
+    );
+    renderProducts(filtered);
+  }
+
+  function renderProducts(filteredList = null) {
+    const container = document.getElementById("product-list");
+    container.innerHTML = "";
+
+    const list = filteredList || allProducts;
+
+    list.forEach(product => {
+      if (currentCategory === "all" || product.category === currentCategory) {
+        const div = document.createElement("div");
+        div.className = "product";
+        div.textContent = product.name;
+        container.appendChild(div);
+      }
+    });
+  }
+
+  renderProducts();
+</script>      
