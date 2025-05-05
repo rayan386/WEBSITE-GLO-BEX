@@ -85,17 +85,4 @@ header {
   text-align: center;
   background-color: #f9f9f9;
 }
- /* إخفاء خانة إضافة المنتج بشكل افتراضي */
-.add-product-container {
-  display: none;
-  padding: 20px;
-  text-align: center;
-  background-color: #f9f9f9;
-  margin-top: 20px;
-}  
-img[onclick="toggleAddProductForm()"] {
-  transition: transform 0.2s ease;
-}
-img[onclick="toggleAddProductForm()"]:hover {
-  transform: scale(1.1);
-}
+ 
