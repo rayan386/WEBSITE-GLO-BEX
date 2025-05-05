@@ -1,132 +1,8 @@
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>موقع البحث</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #ffffff; /* خلفية بيضاء */
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            position: relative;
-        }
-
-        .search-container {
-            text-align: center;
-            width: 80%;
-            max-width: 600px;
-        }
-
-        .search-box {
-            position: relative;
-            width: 100%;
-            margin: 20px 0;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 10px;
-            padding-left: 40px;
-            font-size: 18px;
-            border: 2px solid #ccc;
-            border-radius: 50px; /* حواف دائرية */
-            background-color: #fff;
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 10px;
-            top: 10px;
-            font-size: 18px;
-        }
-
-        .suggestions {
-            list-style-type: none;
-            padding: 0;
-            margin-top: 5px;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            border-top: none;
-            border-radius: 5px;
-            max-height: 200px;
-            overflow-y: auto;
-            display: none;
-        }
-
-        .suggestions li {
-            padding: 10px;
-            cursor: pointer;
-        }
-
-        .suggestions li:hover {
-            background-color: #f1f1f1;
-        }
-
-        .header-logo {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 50px;
-            font-weight: bold;
-            color: #000;
-        }
-    </style>
-</head>
-<body>
-    <!-- شعار Globex في الزاوية العليا اليسرى -->
-    <div class="header-logo">Globex</div>
-    
-    <div class="search-container">
-        <div class="search-box">
-            <i class="search-icon">🔍</i>
-            <input type="text" id="searchInput" class="search-input" placeholder="Gouachich..." onkeyup="showSuggestions()" />
-            <ul id="suggestionsList" class="suggestions"></ul>
-        </div>
-    </div>
-
-    <script>
-        const products = ["شيرت", "شورت", "حذاء", "معطف", "جاكيت", "حقيبة", "نظارات", "قبعة"];
-        
-        function showSuggestions() {
-            const input = document.getElementById('searchInput').value;
-            const suggestionsList = document.getElementById('suggestionsList');
-            suggestionsList.innerHTML = '';
-
-            if (input.length > 0) {
-                const filteredProducts = products.filter(product => product.startsWith(input));
-                
-                if (filteredProducts.length > 0) {
-                    suggestionsList.style.display = 'block';
-                    filteredProducts.forEach(product => {
-                        const listItem = document.createElement('li');
-                        listItem.textContent = product;
-                        listItem.onclick = () => {
-                            document.getElementById('searchInput').value = product;
-                            suggestionsList.style.display = 'none';
-                        };
-                        suggestionsList.appendChild(listItem);
-                    });
-                } else {
-                    suggestionsList.style.display = 'none';
-                }
-            } else {
-                suggestionsList.style.display = 'none';
-            }
-        }
-    </script>
-</body>
-</html>
 <!DOCTYPE html><html lang="ar">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>منتجات Globex</title>
+  <title>Globex Products</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -139,26 +15,57 @@
   padding: 20px;
   font-size: 28px;
   font-weight: bold;
+  text-align: left;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.search-box {
+  width: 80%;
+  max-width: 600px;
+  position: relative;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 40px 12px 20px;
+  font-size: 18px;
+  border: 2px solid #ccc;
+  border-radius: 30px;
+  box-shadow: none;
+}
+
+.search-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #888;
 }
 
 .tabs {
   display: flex;
   justify-content: center;
-  background-color: #eee;
-  padding: 10px;
+  gap: 10px;
+  padding: 10px 20px;
 }
 
 .tab {
-  margin: 0 10px;
-  padding: 10px 20px;
-  background-color: #ddd;
-  border-radius: 20px;
+  font-size: 16px;
+  background: none;
+  border: none;
   cursor: pointer;
-  transition: background-color 0.3s;
+  padding: 8px 16px;
+  color: #000;
 }
 
 .tab:hover, .tab.active {
-  background-color: #bbb;
+  text-decoration: underline;
 }
 
 .products {
@@ -181,11 +88,16 @@
   </style>
 </head>
 <body>
-  <header>Globex</header>  <div class="tabs">
-    <div class="tab active" onclick="filterCategory('all')">Tout</div>
-    <div class="tab" onclick="filterCategory('homme')">Homme</div>
-    <div class="tab" onclick="filterCategory('femme')">Femme</div>
-    <div class="tab" onclick="filterCategory('accessoires')">Accessoires</div>
+  <header>Globex</header>  <div class="search-container">
+    <div class="search-box">
+      <input type="text" class="search-input" placeholder="Rechercher des produits..." onkeyup="searchProducts()">
+      <span class="search-icon">🔍</span>
+    </div>
+  </div>  <div class="tabs">
+    <button class="tab active" onclick="filterCategory('all')">Tout</button>
+    <button class="tab" onclick="filterCategory('homme')">Homme</button>
+    <button class="tab" onclick="filterCategory('femme')">Femme</button>
+    <button class="tab" onclick="filterCategory('accessoires')">Accessoires</button>
   </div>  <div class="products" id="productList"></div>  <script>
     const categories = {
       homme: ['shirt', 'men', "homme"],
@@ -239,6 +151,20 @@
       list.innerHTML = '';
       enrichedProducts.forEach(product => {
         if (currentCategory === 'all' || product.category === currentCategory) {
+          const div = document.createElement('div');
+          div.className = 'product';
+          div.textContent = product.name;
+          list.appendChild(div);
+        }
+      });
+    }
+
+    function searchProducts() {
+      const query = document.querySelector('.search-input').value.toLowerCase();
+      const list = document.getElementById('productList');
+      list.innerHTML = '';
+      enrichedProducts.forEach(product => {
+        if (product.name.toLowerCase().includes(query)) {
           const div = document.createElement('div');
           div.className = 'product';
           div.textContent = product.name;
