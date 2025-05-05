@@ -7,13 +7,14 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            background-color: #ffffff; /* خلفية بيضاء */
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            position: relative;
         }
 
         .search-container {
@@ -34,7 +35,8 @@
             padding-left: 40px;
             font-size: 18px;
             border: 2px solid #ccc;
-            border-radius: 5px;
+            border-radius: 50px; /* حواف دائرية */
+            background-color: #fff;
         }
 
         .search-icon {
@@ -66,20 +68,24 @@
             background-color: #f1f1f1;
         }
 
-        .header {
-            font-size: 40px;
+        .header-logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 50px;
             font-weight: bold;
-            color: #333;
-            margin-top: 30px;
+            color: #000;
         }
     </style>
 </head>
 <body>
+    <!-- شعار Globex في الزاوية العليا اليسرى -->
+    <div class="header-logo">Globex</div>
+    
     <div class="search-container">
-        <div class="header">ابحث عن منتجاتك</div>
         <div class="search-box">
             <i class="search-icon">🔍</i>
-            <input type="text" id="searchInput" class="search-input" placeholder="ابحث عن منتج..." onkeyup="showSuggestions()" />
+            <input type="text" id="searchInput" class="search-input" placeholder="Gouachich..." onkeyup="showSuggestions()" />
             <ul id="suggestionsList" class="suggestions"></ul>
         </div>
     </div>
