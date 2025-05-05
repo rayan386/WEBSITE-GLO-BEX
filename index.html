@@ -122,3 +122,131 @@
     </script>
 </body>
 </html>
+<!DOCTYPE html><html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>منتجات Globex</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      margin: 0;
+      padding: 0;
+    }header {
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  background-color: #eee;
+  padding: 10px;
+}
+
+.tab {
+  margin: 0 10px;
+  padding: 10px 20px;
+  background-color: #ddd;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.tab:hover, .tab.active {
+  background-color: #bbb;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  gap: 15px;
+  justify-content: center;
+}
+
+.product {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px 20px;
+  min-width: 150px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+  </style>
+</head>
+<body>
+  <header>Globex</header>  <div class="tabs">
+    <div class="tab active" onclick="filterCategory('all')">Tout</div>
+    <div class="tab" onclick="filterCategory('homme')">Homme</div>
+    <div class="tab" onclick="filterCategory('femme')">Femme</div>
+    <div class="tab" onclick="filterCategory('accessoires')">Accessoires</div>
+  </div>  <div class="products" id="productList"></div>  <script>
+    const categories = {
+      homme: ['shirt', 'men', "homme"],
+      femme: ['dress', 'women', "femme"],
+      accessoires: ['watch', 'bag', 'necklace', 'accessory']
+    };
+
+    const products = [
+      { name: "Men's T-Shirt" },
+      { name: "Women's Dress" },
+      { name: "Gold Necklace" },
+      { name: "Sneakers" },
+      { name: "Watch" },
+      { name: "Women's Bag" },
+      { name: "Men's Watch" },
+    ];
+
+    function categorize(productName) {
+      const name = productName.toLowerCase();
+      for (const category in categories) {
+        if (categories[category].some(keyword => name.includes(keyword))) {
+          return category;
+        }
+      }
+      return 'all';
+    }
+
+    const enrichedProducts = products.map(p => ({
+      ...p,
+      category: categorize(p.name)
+    }));
+
+    let currentCategory = 'all';
+
+    function filterCategory(category) {
+      currentCategory = category;
+      document.querySelectorAll('.tab').forEach(tab => {
+        tab.classList.remove('active');
+        if (tab.textContent.toLowerCase().includes(category)) {
+          tab.classList.add('active');
+        }
+        if (category === 'all' && tab.textContent.toLowerCase().includes('tout')) {
+          tab.classList.add('active');
+        }
+      });
+      renderProducts();
+    }
+
+    function renderProducts() {
+      const list = document.getElementById('productList');
+      list.innerHTML = '';
+      enrichedProducts.forEach(product => {
+        if (currentCategory === 'all' || product.category === currentCategory) {
+          const div = document.createElement('div');
+          div.className = 'product';
+          div.textContent = product.name;
+          list.appendChild(div);
+        }
+      });
+    }
+
+    renderProducts();
+  </script></body>
+</html>
