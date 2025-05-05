@@ -78,37 +78,3 @@ function searchProducts() {
 }
 
 renderProducts();
-// إظهار / إخفاء خانة إضافة المنتج
-function toggleAddProductForm() {
-  const formContainer = document.getElementById('addProductFormContainer');
-  if (formContainer.style.display === 'none' || formContainer.style.display === '') {
-    formContainer.style.display = 'block'; // إظهار الخانة
-  } else {
-    formContainer.style.display = 'none'; // إخفاء الخانة
-  }
-}
-
-// إضافة منتج جديد
-document.getElementById('addProductForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  
-  const productName = document.getElementById('productName').value;
-  const productCategory = document.getElementById('productCategory').value;
-  
-  if (productName) {
-    enrichedProducts.push({
-      name: productName,
-      category: productCategory
-    });
-    
-    document.getElementById('productName').value = '';  // تفريغ خانة الاسم
-    renderProducts();
-  }
-});
-if (window.location.hostname === 'localhost') {
-  // إظهار الخانة فقط إذا كان الموقع يعمل محليًا
-  document.getElementById('addProductFormContainer').style.display = 'block';
-} else {
-  // إخفاء الخانة في بيئة الإنتاج
-  document.getElementById('addProductFormContainer').style.display = 'none';
-}
