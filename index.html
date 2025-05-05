@@ -1,40 +1,100 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>GlobeX</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <title>Globex Store</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #1a1a1a;
+      color: white;
+      padding: 15px 30px;
+    }
+    .logo {
+      font-size: 2em;
+      font-weight: bold;
+    }
+    .search-container {
+      position: relative;
+      width: 40%;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+    }
+    .suggestions {
+      position: absolute;
+      background-color: white;
+      border: 1px solid #ccc;
+      width: 100%;
+      max-height: 200px;
+      overflow-y: auto;
+      z-index: 1000;
+    }
+    .suggestions div {
+      padding: 10px;
+      cursor: pointer;
+    }
+    .suggestions div:hover {
+      background-color: #eee;
+    }
+    .results {
+      padding: 20px;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="logo">GlobeX</div>
-        <input type="text" class="search" placeholder="ابحث عن المنتجات...">
-    </header>
 
-    <main>
-        <h2>منتجات مميزة</h2>
-        <div class="product-grid">
-            <div class="product-card">
-                <img src="https://via.placeholder.com/150" alt="منتج 1">
-                <h3>منتج 1</h3>
-                <p>100 درهم</p>
-            </div>
-            <div class="product-card">
-                <img src="https://via.placeholder.com/150" alt="منتج 2">
-                <h3>منتج 2</h3>
-                <p>150 درهم</p>
-            </div>
-            <div class="product-card">
-                <img src="https://via.placeholder.com/150" alt="منتج 3">
-                <h3>منتج 3</h3>
-                <p>200 درهم</p>
-            </div>
-        </div>
-    </main>
+  <header>
+    <div class="logo">Globex</div>
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="ابحث عن منتج...">
+      <div id="suggestions" class="suggestions"></div>
+    </div>
+  </header>
 
-    <footer>
-        <p>&copy; 2025 GlobeX. جميع الحقوق محفوظة.</p>
-    </footer>
+  <div class="results" id="results"></div>
+
+  <script>
+    const products = [
+      "تفاح", "تمر", "توت", "تمر هندي", "جبن", "جزر", "حليب", "خبز", "خوخ", "دقيق", "ذرة", "زيت", "زبادي"
+    ];
+
+    const input = document.getElementById("searchInput");
+    const suggestions = document.getElementById("suggestions");
+    const results = document.getElementById("results");
+
+    input.addEventListener("input", () => {
+      const query = input.value.toLowerCase();
+      suggestions.innerHTML = "";
+      if (query.length === 0) return;
+
+      const matches = products.filter(p => p.startsWith(query));
+      matches.forEach(match => {
+        const div = document.createElement("div");
+        div.textContent = match;
+        div.onclick = () => showResult(match);
+        suggestions.appendChild(div);
+      });
+    });
+
+    function showResult(product) {
+      suggestions.innerHTML = "";
+      input.value = product;
+      results.innerHTML = <h2>نتائج المنتج: ${product}</h2><p>تفاصيل المنتج ستظهر هنا (يمكنك تعديل هذا الجزء).</p>;
+    }
+  </script>
+
 </body>
 </html>
