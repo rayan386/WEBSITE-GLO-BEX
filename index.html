@@ -242,38 +242,178 @@
   </style>
 </head>
 <body>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produits</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #f2f2f2;
+    }
 
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .product {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .product:hover {
+      transform: scale(1.05);
+    }
+
+    .product img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 15px;
+    }
+
+    .price {
+      color: #e74c3c;
+      font-weight: bold;
+      padding: 8px 0;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 8px 20px;
+      background-color: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn:hover {
+      background-color: #219150;
+    }
+
+    /* Page de détails */
+    .product-detail {
+      background: #fff;
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      text-align: center;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-detail img {
+      width: 100%;
+      height: auto;
+    }
+
+    .description {
+      margin: 15px 0;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .size-selector {
+      margin-bottom: 15px;
+    }
+
+    .continue-btn {
+      padding: 12px 25px;
+      background-color: #2980b9;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .continue-btn:hover {
+      background-color: #1c6483;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Section des produits -->
   <div class="container">
     <!-- Exemple produit 1 -->
     <div class="product" onclick="window.location.href='detail1.html'">
-      <img src="https://i.postimg.cc/VN5cWbBs/Screenshot-20250509-224151-2.png" alt="Produit">
-      <div class="price">200 MAD</div>
-      <a class="btn" href="detail1.html">Acheter</a>
+      <img src="https://i.postimg.cc/VN5cWbBs/Screenshot-20250509-224151-2.png" alt="Produit T-shirt Cool">
+      <div class="product-info">
+        <div class="price">200 MAD</div>
+        <a href="detail1.html" class="btn">Acheter</a>
+      </div>
     </div>
 
     <!-- Exemple produit 2 -->
     <div class="product" onclick="window.location.href='detail2.html'">
-      <img src="https://i.postimg.cc/Gm8QPLTw/Screenshot-20250509-224709.png" alt="Produit">
-      <div class="price">150 MAD</div>
-      <a class="btn" href="detail2.html">Acheter</a>
+      <img src="https://i.postimg.cc/Gm8QPLTw/Screenshot-20250509-224709.png" alt="Produit T-shirt Sport">
+      <div class="product-info">
+        <div class="price">150 MAD</div>
+        <a href="detail2.html" class="btn">Acheter</a>
+      </div>
     </div>
 
-    <!-- Copie أكثر للمنتجات -->
+    <!-- Exemple produit 3 -->
     <div class="product" onclick="window.location.href='detail3.html'">
-      <img src="https://i.postimg.cc/gJDqcrQR/Screenshot-20250509-223846.png" alt="Produit">
-      <div class="price">120 MAD</div>
-      <a class="btn" href="detail3.html">Acheter</a>
+      <img src="https://i.postimg.cc/gJDqcrQR/Screenshot-20250509-223846.png" alt="Produit Sac à dos">
+      <div class="product-info">
+        <div class="price">120 MAD</div>
+        <a href="detail3.html" class="btn">Acheter</a>
+      </div>
     </div>
 
+    <!-- Exemple produit 4 -->
     <div class="product" onclick="window.location.href='detail4.html'">
-      <img src="https://i.postimg.cc/J0z3sMCF/Screenshot-20250509-223907-2.png" alt="Produit">
-      <div class="price">170 MAD</div>
-      <a class="btn" href="detail4.html">Acheter</a>
+      <img src="https://i.postimg.cc/J0z3sMCF/Screenshot-20250509-223907-2.png" alt="Produit Chaussures">
+      <div class="product-info">
+        <div class="price">170 MAD</div>
+        <a href="detail4.html" class="btn">Acheter</a>
+      </div>
     </div>
   </div>
 
+  <!-- Page de détails -->
+  <div class="product-detail">
+    <img src="https://i.postimg.cc/VN5cWbBs/Screenshot-20250509-224151-2.png" alt="Produit T-shirt Cool">
+    <h2>T-shirt Cool</h2>
+    <p class="description">Un t-shirt tendance et confortable, parfait pour toutes les occasions. Disponible en différentes tailles.</p>
+
+    <div class="size-selector">
+      <label for="size">Choisir la taille:</label>
+      <select id="size" name="size">
+        <option value="S">Small</option>
+        <option value="M">Medium</option>
+        <option value="L">Large</option>
+        <option value="XL">X-Large</option>
+      </select>
+    </div>
+
+    <a href="payment_page.html" class="continue-btn">Continuer vers le paiement</a>
+  </div>
+
+  <script>
+    // Logic to handle the product details page
+  </script>
+
 </body>
 </html>
-<a href="produits.html?name=T-shirt%20Cool&price=149%20MAD&image=https://i.postimg.cc/VN5cWbBs/Screenshot-20250509-224151-2.png">
-  <img src="https://i.postimg.cc/VN5cWbBs/Screenshot-20250509-224151-2.png" style="width:150px; border-radius:10px;">
-</a>
+  
