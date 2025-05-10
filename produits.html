@@ -1,1 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Détails du produit</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; text-align: center; background-color: #f7f7f7; }
+    .product-container { max-width: 400px; margin: auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    .product-img { max-width: 100%; border-radius: 15px; margin-bottom: 15px; }
+    .title { font-size: 22px; margin-bottom: 10px; }
+    .price { font-size: 20px; color: green; margin-bottom: 10px; }
+    .size, .description, .delivery { margin: 8px 0; font-size: 16px; }
+    button {
+      padding: 12px 25px;
+      font-size: 16px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
 
+  <div class="product-container">
+    <img id="productImage" class="product-img" src="" alt="Produit">
+    <div class="title" id="productName">Produit</div>
+    <div class="price" id="productPrice">Prix: </div>
+    <div class="size">Tailles: S, M, L, XL</div>
+    <div class="description">Ce produit est parfait pour un style moderne et confortable.</div>
+    <div class="delivery">Livraison: 20 MAD</div>
+    <button onclick="goToFakePayment()">Continuer</button>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById("productImage").src = params.get("image") || "";
+    document.getElementById("productName").innerText = decodeURIComponent(params.get("name") || "Produit");
+    document.getElementById("productPrice").innerText = "Prix: " + decodeURIComponent(params.get("price") || "0 MAD");
+
+    function goToFakePayment() {
+      window.location.href = "paiement.html"; // صفحة وهمية
+    }
+  </script>
+</body>
+</html>
