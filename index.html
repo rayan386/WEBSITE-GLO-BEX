@@ -178,8 +178,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Produits</title>
   <style>
     body {
@@ -193,8 +193,8 @@
       margin: auto;
       padding: 20px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 15px;
     }
 
     .product {
@@ -203,152 +203,90 @@
       overflow: hidden;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       text-align: center;
-      cursor: pointer;
       transition: transform 0.2s;
-      height: 100%;
     }
 
     .product:hover {
-      transform: scale(1.05);
+      transform: scale(1.03);
     }
 
     .product img {
       width: 100%;
-      height: 150px;
+      height: 170px;
       object-fit: cover;
     }
 
     .product-info {
-      padding: 15px;
-      text-align: left;
+      padding: 10px;
     }
 
     .price {
       color: #e74c3c;
       font-weight: bold;
-      padding: 8px 0;
+      font-size: 16px;
+      margin: 5px 0;
     }
 
     .description {
-      font-size: 14px;
-      color: #666;
-      margin: 10px 0;
+      font-size: 13px;
+      color: #555;
+      margin-bottom: 10px;
     }
 
     .btn {
       display: inline-block;
-      padding: 8px 20px;
+      padding: 6px 15px;
       background-color: #27ae60;
       color: white;
       border: none;
       border-radius: 4px;
       text-decoration: none;
-      transition: background 0.2s;
+      font-size: 14px;
     }
 
     .btn:hover {
       background-color: #219150;
     }
-
-    /* صفحة التفاصيل */
-    .product-detail {
-      background: #fff;
-      max-width: 600px;
-      margin: auto;
-      padding: 20px;
-      text-align: center;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .product-detail img {
-      width: 100%;
-      height: auto;
-      max-height: 400px;
-      object-fit: cover;
-    }
-
-    .size-selector {
-      margin-bottom: 15px;
-    }
-
-    .continue-btn {
-      padding: 12px 25px;
-      background-color: #2980b9;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 18px;
-    }
-
-    .continue-btn:hover {
-      background-color: #1c6483;
-    }
   </style>
 </head>
 <body>
 
-  <!-- Section des produits -->
   <div class="container">
-    <!-- Exemple produit 1 -->
     <div class="product">
-      <img src="https://i.postimg.cc/VN5cWbBs/Screenshot-20250509-224151-2.png" alt="Produit T-shirt Cool">
+      <img src="https://i.postimg.cc/VN5cWbBs/Screenshot-20250509-224151-2.png" alt="T-shirt Cool">
       <div class="product-info">
         <div class="price">200 MAD</div>
-        <div class="description">T-shirt tendance, parfait pour tous les jours.</div>
-        <a href="detail1.html" class="btn">Acheter</a>
+        <div class="description">T-shirt tendance pour l'été.</div>
+        <a class="btn" href="detail1.html">Acheter</a>
       </div>
     </div>
 
-    <!-- Exemple produit 2 -->
     <div class="product">
-      <img src="https://i.postimg.cc/Gm8QPLTw/Screenshot-20250509-224709.png" alt="Produit T-shirt Sport">
+      <img src="https://i.postimg.cc/Gm8QPLTw/Screenshot-20250509-224709.png" alt="T-shirt Sport">
       <div class="product-info">
         <div class="price">150 MAD</div>
-        <div class="description">T-shirt confortable pour les activités sportives.</div>
-        <a href="detail2.html" class="btn">Acheter</a>
+        <div class="description">T-shirt de sport confortable.</div>
+        <a class="btn" href="detail2.html">Acheter</a>
       </div>
     </div>
 
-    <!-- Exemple produit 3 -->
     <div class="product">
-      <img src="https://i.postimg.cc/gJDqcrQR/Screenshot-20250509-223846.png" alt="Produit Sac à dos">
+      <img src="https://i.postimg.cc/gJDqcrQR/Screenshot-20250509-223846.png" alt="Sac à dos">
       <div class="product-info">
         <div class="price">120 MAD</div>
-        <div class="description">Sac à dos spacieux et pratique pour tous vos déplacements.</div>
-        <a href="detail3.html" class="btn">Acheter</a>
+        <div class="description">Sac à dos pratique et stylé.</div>
+        <a class="btn" href="detail3.html">Acheter</a>
       </div>
     </div>
 
-    <!-- Exemple produit 4 -->
     <div class="product">
-      <img src="https://i.postimg.cc/J0z3sMCF/Screenshot-20250509-223907-2.png" alt="Produit Chaussures">
+      <img src="https://i.postimg.cc/J0z3sMCF/Screenshot-20250509-223907-2.png" alt="Chaussures">
       <div class="product-info">
         <div class="price">170 MAD</div>
-        <div class="description">Chaussures élégantes pour un look moderne et confortable.</div>
-        <a href="detail4.html" class="btn">Acheter</a>
+        <div class="description">Chaussures élégantes et confortables.</div>
+        <a class="btn" href="detail4.html">Acheter</a>
       </div>
     </div>
-  </div>
-
-  <!-- صفحة التفاصيل -->
-  <div class="product-detail">
-    <img src="https://i.postimg.cc/VN5cWbBs/Screenshot-20250509-224151-2.png" alt="Produit T-shirt Cool">
-    <h2>T-shirt Cool</h2>
-    <p class="description">Un t-shirt tendance et confortable, parfait pour toutes les occasions. Disponible en différentes tailles.</p>
-
-    <div class="size-selector">
-      <label for="size">Choisir la taille:</label>
-      <select id="size" name="size">
-        <option value="S">Small</option>
-        <option value="M">Medium</option>
-        <option value="L">Large</option>
-        <option value="XL">X-Large</option>
-      </select>
-    </div>
-
-    <a href="payment_page.html" class="continue-btn">Continuer vers le paiement</a>
   </div>
 
 </body>
