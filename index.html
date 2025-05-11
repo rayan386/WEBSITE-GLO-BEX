@@ -175,91 +175,110 @@
 
     renderProducts();
   </script></body>
-<!DOCTYPE html><html lang="fr">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Produits</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Boutique</title>
   <style>
     body {
-      font-family: sans-serif;
-      margin: 0;
+      font-family: Arial, sans-serif;
       padding: 20px;
-      background: #f5f5f5;
+      background-color: #f5f5f5;
     }
-    .produits {
+    .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
     }
-    .produit {
+    .product-card {
       background: white;
-      border-radius: 8px;
+      border-radius: 10px;
       padding: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       text-align: center;
-      transition: transform 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
-    .produit:hover {
-      transform: scale(1.03);
-    }
-    .produit img {
+    .product-card img {
       width: 100%;
       height: auto;
-      object-fit: cover;
-      border-radius: 6px;
+      border-radius: 8px;
     }
-    .prix {
-      color: #e91e63;
+    .price {
+      color: #333;
       font-weight: bold;
       margin-top: 10px;
     }
-    .description {
-      font-size: 0.85em;
-      color: #444;
+    .desc {
+      font-size: 14px;
+      color: #666;
       margin: 5px 0;
     }
-    .btn-acheter {
-      background-color: #007bff;
+    .buy-button {
+      margin-top: 10px;
+      background-color: green;
       color: white;
-      padding: 6px 12px;
       border: none;
-      border-radius: 4px;
+      padding: 10px 15px;
+      border-radius: 25px;
       cursor: pointer;
-      font-size: 0.9em;
+      font-weight: bold;
+      transition: background 0.3s ease;
     }
-    .btn-acheter:hover {
-      background-color: #0056b3;
+    .buy-button:hover {
+      background-color: darkgreen;
     }
   </style>
 </head>
 <body>
-  <h2>Nos produits</h2>
-  <div class="produits">
-    <div class="produit" onclick="location.href='product.html?id=1'">
-      <img src="https://i.postimg.cc/yxpyyTgn/Screenshot-20250509-224709.png" alt="Produit 1">
-      <div class="prix">400 MAD</div>
-      <div class="description">T-shirt élégant et confortable.</div>
-      <button class="btn-acheter">Acheter</button>
-    </div>
-    <div class="produit" onclick="location.href='product.html?id=2'">
-      <img src="https://i.postimg.cc/PfSyHd3Z/Screenshot-20250509-224151-2.png" alt="Produit 2">
-      <div class="prix">200 MAD</div>
-      <div class="description">Style moderne pour tous les jours.</div>
-      <button class="btn-acheter">Acheter</button>
-    </div>
-    <div class="produit" onclick="location.href='product.html?id=3'">
-      <img src="https://i.postimg.cc/Kv4NvCwW/Screenshot-20250509-223846.png" alt="Produit 3">
-      <div class="prix">300 MAD</div>
-      <div class="description">T-shirt classique bleu foncé.</div>
-      <button class="btn-acheter">Acheter</button>
-    </div>
-    <div class="produit" onclick="location.href='product.html?id=4'">
-      <img src="https://i.postimg.cc/7YcNCmyZ/Screenshot-20250509-223907-2.png" alt="Produit 4">
-      <div class="prix">350 MAD</div>
-      <div class="description">Design simple et chic.</div>
-      <button class="btn-acheter">Acheter</button>
-    </div>
+
+<h1>Nos Produits</h1>
+
+<div class="products">
+  <div class="product-card">
+    <a href="product.html?img=https://i.postimg.cc/yxpyyTgn/Screenshot-20250509-224709.png&price=400&desc=T-shirt tendance noir">
+      <img src="https://i.postimg.cc/yxpyyTgn/Screenshot-20250509-224709.png" alt="Produit 1"/>
+    </a>
+    <div class="price">400 MAD</div>
+    <div class="desc">T-shirt tendance noir</div>
+    <a href="product.html?img=https://i.postimg.cc/yxpyyTgn/Screenshot-20250509-224709.png&price=400&desc=T-shirt tendance noir">
+      <button class="buy-button">Acheter</button>
+    </a>
   </div>
+
+  <div class="product-card">
+    <a href="product.html?img=https://i.postimg.cc/PfSyHd3Z/Screenshot-20250509-224151-2.png&price=200&desc=T-shirt bleu été">
+      <img src="https://i.postimg.cc/PfSyHd3Z/Screenshot-20250509-224151-2.png" alt="Produit 2"/>
+    </a>
+    <div class="price">200 MAD</div>
+    <div class="desc">T-shirt bleu été</div>
+    <a href="product.html?img=https://i.postimg.cc/PfSyHd3Z/Screenshot-20250509-224151-2.png&price=200&desc=T-shirt bleu été">
+      <button class="buy-button">Acheter</button>
+    </a>
+  </div>
+
+  <div class="product-card">
+    <a href="product.html?img=https://i.postimg.cc/Kv4NvCwW/Screenshot-20250509-223846.png&price=300&desc=T-shirt à manches longues">
+      <img src="https://i.postimg.cc/Kv4NvCwW/Screenshot-20250509-223846.png" alt="Produit 3"/>
+    </a>
+    <div class="price">300 MAD</div>
+    <div class="desc">T-shirt à manches longues</div>
+    <a href="product.html?img=https://i.postimg.cc/Kv4NvCwW/Screenshot-20250509-223846.png&price=300&desc=T-shirt à manches longues">
+      <button class="buy-button">Acheter</button>
+    </a>
+  </div>
+
+  <div class="product-card">
+    <a href="product.html?img=https://i.postimg.cc/7YcNCmyZ/Screenshot-20250509-223907-2.png&price=250&desc=T-shirt sport">
+      <img src="https://i.postimg.cc/7YcNCmyZ/Screenshot-20250509-223907-2.png" alt="Produit 4"/>
+    </a>
+    <div class="price">250 MAD</div>
+    <div class="desc">T-shirt sport</div>
+    <a href="product.html?img=https://i.postimg.cc/7YcNCmyZ/Screenshot-20250509-223907-2.png&price=250&desc=T-shirt sport">
+      <button class="buy-button">Acheter</button>
+    </a>
+  </div>
+</div>
+
 </body>
 </html>
