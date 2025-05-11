@@ -3,86 +3,95 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Détails du produit</title>
+  <title>Détails du Produit</title>
   <style>
     body {
-      font-family: sans-serif;
-      margin: 20px;
-      background-color: #f9f9f9;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #fff;
     }
     .product-container {
-      max-width: 600px;
+      max-width: 500px;
       margin: auto;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      padding: 20px;
+      text-align: center;
     }
-    img {
+    .product-container img {
       width: 100%;
-      border-radius: 12px;
+      height: auto;
+      border-radius: 10px;
     }
-    .title {
-      font-size: 20px;
-      font-weight: bold;
-      margin-top: 15px;
-    }
-    .price {
-      font-size: 18px;
-      color: #28a745;
-      margin-top: 10px;
-    }
-    .desc {
+    .sizes, .colors {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
       margin: 15px 0;
     }
-    select, button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
+    .circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      line-height: 40px;
+      text-align: center;
+      cursor: pointer;
+      border: 2px solid #ccc;
+      font-weight: bold;
+    }
+    .colors .circle {
+      border: none;
+    }
+    .white { background-color: #fff; border: 2px solid #000; }
+    .blue { background-color: blue; }
+    .black { background-color: black; }
+    .price, .desc, .delivery {
+      margin: 10px 0;
       font-size: 16px;
     }
-    button {
-      background-color: #007bff;
+    .follow-button {
+      background-color: green;
       color: white;
+      padding: 12px 24px;
       border: none;
+      border-radius: 25px;
+      font-size: 16px;
       cursor: pointer;
-      border-radius: 8px;
+      margin-top: 20px;
+    }
+    .follow-button:hover {
+      background-color: darkgreen;
     }
   </style>
 </head>
 <body>
-  <div class="product-container">
-    <img id="productImage" src="" alt="Produit" />
-    <div class="title" id="productTitle"></div>
-    <div class="price" id="productPrice"></div>
-    <div class="desc" id="productDesc"></div>
 
-    <label for="size">Taille :</label>
-    <select id="size">
-      <option>S</option>
-      <option>M</option>
-      <option>L</option>
-      <option>XL</option>
-      <option>XXL</option>
-    </select>
-
-    <label for="color">Couleur :</label>
-    <select id="color">
-      <option>Noir</option>
-      <option>Blanc</option>
-      <option>Bleu</option>
-    </select>
-
-    <button onclick="window.location.href='checkout.html'">Suivant</button>
+<div class="product-container">
+  <img id="productImage" src="" alt="Produit">
+  <div class="sizes">
+    <div class="circle">S</div>
+    <div class="circle">M</div>
+    <div class="circle">L</div>
+    <div class="circle">XL</div>
+    <div class="circle">XXL</div>
   </div>
+  <div class="colors">
+    <div class="circle white"></div>
+    <div class="circle blue"></div>
+    <div class="circle black"></div>
+  </div>
+  <div class="desc" id="productDesc"></div>
+  <div class="price" id="productPrice"></div>
+  <div class="delivery">Frais de livraison : 30 MAD</div>
+  <a href="payment.html">
+    <button class="follow-button">Suivant</button>
+  </a>
+</div>
 
-  <script>
-    // استلام التفاصيل من الرابط
-    const params = new URLSearchParams(window.location.search);
-    document.getElementById("productImage").src = params.get("img");
-    document.getElementById("productTitle").textContent = params.get("title");
-    document.getElementById("productPrice").textContent = params.get("price") + " MAD";
-    document.getElementById("productDesc").textContent = params.get("desc");
-  </script>
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  document.getElementById("productImage").src = urlParams.get('img');
+  document.getElementById("productDesc").textContent = urlParams.get('desc');
+  document.getElementById("productPrice").textContent = urlParams.get('price') + " MAD";
+</script>
+
 </body>
 </html>
