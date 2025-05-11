@@ -1,1 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Détails du produit</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+      background-color: #f9f9f9;
+    }
+    .product-container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 20px;
+    }
+    img {
+      width: 100%;
+      border-radius: 12px;
+    }
+    .title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+    .price {
+      font-size: 18px;
+      color: #28a745;
+      margin-top: 10px;
+    }
+    .desc {
+      margin: 15px 0;
+    }
+    select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="product-container">
+    <img id="productImage" src="" alt="Produit" />
+    <div class="title" id="productTitle"></div>
+    <div class="price" id="productPrice"></div>
+    <div class="desc" id="productDesc"></div>
 
+    <label for="size">Taille :</label>
+    <select id="size">
+      <option>S</option>
+      <option>M</option>
+      <option>L</option>
+      <option>XL</option>
+      <option>XXL</option>
+    </select>
+
+    <label for="color">Couleur :</label>
+    <select id="color">
+      <option>Noir</option>
+      <option>Blanc</option>
+      <option>Bleu</option>
+    </select>
+
+    <button onclick="window.location.href='checkout.html'">Suivant</button>
+  </div>
+
+  <script>
+    // استلام التفاصيل من الرابط
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById("productImage").src = params.get("img");
+    document.getElementById("productTitle").textContent = params.get("title");
+    document.getElementById("productPrice").textContent = params.get("price") + " MAD";
+    document.getElementById("productDesc").textContent = params.get("desc");
+  </script>
+</body>
+</html>
