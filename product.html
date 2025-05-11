@@ -9,7 +9,7 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 20px;
-      background-color: transparent;
+      background-color: #fff;
     }
     .product-container {
       max-width: 500px;
@@ -68,30 +68,49 @@
 <div class="product-container">
   <img id="productImage" src="" alt="Produit">
   <div class="sizes">
-    <div class="circle">S</div>
-    <div class="circle">M</div>
-    <div class="circle">L</div>
-    <div class="circle">XL</div>
-    <div class="circle">XXL</div>
+    <div class="circle" id="sizeS">S</div>
+    <div class="circle" id="sizeM">M</div>
+    <div class="circle" id="sizeL">L</div>
+    <div class="circle" id="sizeXL">XL</div>
+    <div class="circle" id="sizeXXL">XXL</div>
   </div>
   <div class="colors">
-    <div class="circle white"></div>
-    <div class="circle blue"></div>
-    <div class="circle black"></div>
+    <div class="circle white" id="colorWhite"></div>
+    <div class="circle blue" id="colorBlue"></div>
+    <div class="circle black" id="colorBlack"></div>
   </div>
   <div class="desc" id="productDesc"></div>
   <div class="price" id="productPrice"></div>
-  <div class="delivery">Frais de livraison : GRATUI MAD</div>
+  <div class="delivery">Frais de livraison : 30 MAD</div>
   <a href="payment.html">
     <button class="follow-button">Suivant</button>
   </a>
 </div>
 
 <script>
+  // Récupérer les paramètres de l'URL
   const urlParams = new URLSearchParams(window.location.search);
   document.getElementById("productImage").src = urlParams.get('img');
   document.getElementById("productDesc").textContent = urlParams.get('desc');
   document.getElementById("productPrice").textContent = urlParams.get('price') + " MAD";
+
+  // Gérer la sélection des tailles
+  const sizes = document.querySelectorAll('.sizes .circle');
+  sizes.forEach(size => {
+    size.addEventListener('click', () => {
+      sizes.forEach(s => s.style.border = '2px solid #ccc'); // Réinitialiser les bordures
+      size.style.border = '2px solid black'; // Ajouter une bordure noire à la taille sélectionnée
+    });
+  });
+
+  // Gérer la sélection des couleurs
+  const colors = document.querySelectorAll('.colors .circle');
+  colors.forEach(color => {
+    color.addEventListener('click', () => {
+      colors.forEach(c => c.style.border = 'none'); // Réinitialiser les bordures
+      color.style.border = '2px solid black'; // Ajouter une bordure noire à la couleur sélectionnée
+    });
+  });
 </script>
 
 </body>
