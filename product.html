@@ -61,12 +61,18 @@
     .follow-button:hover {
       background-color: darkgreen;
     }
+    .stars {
+      font-size: 20px;
+      color: gold;
+      margin-top: 5px;
+    }
   </style>
 </head>
 <body>
 
 <div class="product-container">
   <img id="productImage" src="" alt="Produit">
+  <h2 id="productName">Nom du produit</h2>
   <div class="sizes">
     <div class="circle" id="sizeS">S</div>
     <div class="circle" id="sizeM">M</div>
@@ -81,6 +87,12 @@
   </div>
   <div class="desc" id="productDesc"></div>
   <div class="price" id="productPrice"></div>
+  
+  <!-- نجوم التقييم -->
+  <div class="stars" id="productStars">
+    &#9733;&#9733;&#9733;&#9733;&#9734;
+  </div>
+
   <div class="delivery">Frais de livraison : 30 MAD</div>
   <a href="payment.html">
     <button class="follow-button">Suivant</button>
@@ -88,30 +100,9 @@
 </div>
 
 <script>
-  // Récupérer les paramètres de l'URL
+  // ربط المعلمات من URL
   const urlParams = new URLSearchParams(window.location.search);
   document.getElementById("productImage").src = urlParams.get('img');
   document.getElementById("productDesc").textContent = urlParams.get('desc');
   document.getElementById("productPrice").textContent = urlParams.get('price') + " MAD";
-
-  // Gérer la sélection des tailles
-  const sizes = document.querySelectorAll('.sizes .circle');
-  sizes.forEach(size => {
-    size.addEventListener('click', () => {
-      sizes.forEach(s => s.style.border = '2px solid #ccc'); // Réinitialiser les bordures
-      size.style.border = '2px solid black'; // Ajouter une bordure noire à la taille sélectionnée
-    });
-  });
-
-  // Gérer la sélection des couleurs
-  const colors = document.querySelectorAll('.colors .circle');
-  colors.forEach(color => {
-    color.addEventListener('click', () => {
-      colors.forEach(c => c.style.border = 'none'); // Réinitialiser les bordures
-      color.style.border = '2px solid black'; // Ajouter une bordure noire à la couleur sélectionnée
-    });
-  });
-</script>
-
-</body>
-</html>
+  document.getElement
