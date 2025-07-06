@@ -1,0 +1,25 @@
+ .container {
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #ffffff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.heroSection {
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.heroSection h1 {
+  font-size: 2.5rem;
+  color: #FF6B00;
+  margin-bottom: 1rem;
+}
+   
